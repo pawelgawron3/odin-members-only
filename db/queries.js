@@ -5,6 +5,14 @@ async function getUserById(id) {
   return rows[0];
 }
 
+async function getUserByUsername(username) {
+  const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [
+    username,
+  ]);
+  return rows[0];
+}
+
 export const db = {
   getUserById,
+  getUserByUsername,
 };
