@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
+import passport from "passport";
 import pool from "./db/pool.js";
 import homeRouter from "./routes/homeRouter.js";
 
@@ -20,12 +21,17 @@ app.use(express.static("public"));
 
 app.use(
   session({
-    store: new pgSession({ pool, createTableIfMissing: true }),
+    store: new pgSession({
+      pool,
+      tableName: "sessions",
+      createTableIfMissing: true,
+    }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   }),
 );
+app.use(passport.session());
 
 app.get("/", homeRouter);
 
