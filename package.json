@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/pawelgawron3/odin-members-only/issues"
   },
-  "homepage": "https://github.com/pawelgawron3/odin-members-only#readme"
+  "homepage": "https://github.com/pawelgawron3/odin-members-only#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
