@@ -1,5 +1,10 @@
 import "dotenv/config";
 import express from "express";
+import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
+import pool from "./db/pool.js";
+
+const pgSession = connectPgSimple(session);
 
 const app = express();
 
@@ -11,6 +16,15 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
+
+app.use(
+  session({
+    store: new pgSession({ pool, createTableIfMissing: true }),
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
