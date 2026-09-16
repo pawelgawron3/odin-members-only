@@ -3,6 +3,7 @@ import express from "express";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import pool from "./db/pool.js";
+import homeRouter from "./routes/homeRouter.js";
 
 const pgSession = connectPgSimple(session);
 
@@ -25,6 +26,8 @@ app.use(
     saveUninitialized: false,
   }),
 );
+
+app.get("/", homeRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
