@@ -34,6 +34,16 @@ const authController = {
   async getLoginForm(req, res) {
     res.render("login-form");
   },
+
+  logout(req, res, next) {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+
+      res.redirect("/");
+    });
+  },
 };
 
 export default authController;
