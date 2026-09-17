@@ -10,13 +10,11 @@
 
     <h1 class="title">Hello!</h1>
 
-    <% if(currentUser){ %>
-        <p>Currently logged user is: <%= currentUser.username %></p>
-    <% } %>
-
-    <% if(!currentUser){ %>
-        <p>Not logged in!</p>
-    <% } %>
+    <ul>
+        <% messages.forEach((message) => {%>
+            <li><%= message.text %></li>
+        <% }) %>
+    </ul>
 
     <%- include("partials/footer.ejs") %>
 </body>

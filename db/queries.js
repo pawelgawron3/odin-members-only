@@ -1,7 +1,7 @@
 import pool from "./pool.js";
 
 async function getUserById(id) {
-  const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+  const { rows } = await pool.query("SELECT * FROM users WHERE id = $1W", [id]);
   return rows[0];
 }
 
@@ -26,8 +26,19 @@ async function registerNewAccount(user) {
   ]);
 }
 
+async function getMessages() {
+  const SQL = `
+    SELECT u.username, m.title, m.text, m.created_at 
+    FROM messages AS m JOIN users AS u ON m.user_id = u.id
+  `;
+
+  const { rows } = await pool.query(SQL);
+  return rows;
+}
+
 export const db = {
   getUserById,
   getUserByUsername,
   registerNewAccount,
+  getMessages,
 };

@@ -1,6 +1,10 @@
+import { db } from "../db/queries.js";
+
 const homeController = {
-  getHomepage(req, res) {
-    res.render("home");
+  async getHomepage(req, res) {
+    const messages = await db.getMessages();
+
+    res.render("home", { messages });
   },
 };
 
