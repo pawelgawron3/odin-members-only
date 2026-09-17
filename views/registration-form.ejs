@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropmsg | Register new account</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <h1 class="title">Register a new account</h1>
+
+    <div class="form-wrapper">
+        <% if (errors.length > 0) { %>
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+
+        <form action="/auth/register" method="POST">
+            <label for="firstname">Firstname:</label>
+            <input type="text" id="firstname" name="firstname" required placeholder="Mark">
+
+            <label for="lastname">Lastname:</label>
+            <input type="text" id="lastname" name="lastname" required placeholder="Zimmerman">
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required placeholder="rooster99">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit">Register an account</button>
+        </form>
+    </div>
+    
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
