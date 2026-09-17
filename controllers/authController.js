@@ -1,6 +1,6 @@
 import { db } from "../db/queries.js";
 import { validationResult } from "express-validator";
-import { hashPassword } from "../utils/password.js";
+import { comparePassword, hashPassword } from "../utils/password.js";
 
 const authController = {
   getRegistrationForm(req, res) {
@@ -29,6 +29,10 @@ const authController = {
     await db.registerNewAccount(user);
 
     res.redirect("/auth/login");
+  },
+
+  async getLoginForm(req, res) {
+    res.render("login-form");
   },
 };
 
