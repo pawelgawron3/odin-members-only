@@ -1,6 +1,6 @@
 import { db } from "../db/queries.js";
 import { validationResult } from "express-validator";
-import { comparePassword, hashPassword } from "../utils/password.js";
+import { hashPassword } from "../utils/password.js";
 
 const authController = {
   getRegistrationForm(req, res) {
@@ -43,6 +43,19 @@ const authController = {
 
       res.redirect("/");
     });
+  },
+
+  async joinClub(req, res) {
+    const userId = req.user.id;
+    const { passcode } = req.body;
+
+    if (passcode !== process.env.CLUB_PASSCODE) {
+      return res.status(400).send("Invalid passcode");
+    }
+
+    await db.updateMembershipStatus(userId);
+
+    res.redirect("/");
   },
 };
 
