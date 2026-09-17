@@ -36,9 +36,20 @@ async function getMessages() {
   return rows;
 }
 
+async function updateMembershipStatus(userId) {
+  const SQL = `
+    UPDATE users
+    SET membership_status = true
+    WHERE id = $1
+  `;
+
+  await pool.query(SQL, [userId]);
+}
+
 export const db = {
   getUserById,
   getUserByUsername,
   registerNewAccount,
   getMessages,
+  updateMembershipStatus,
 };
