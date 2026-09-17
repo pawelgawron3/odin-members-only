@@ -5,11 +5,37 @@
       <span class="logo-text">Dropmsg</span>
     </a>
   </div>
-  <% if(!currentUser){%>
-    <a class="log-in-link" href="/auth/login">Log in</a>
-  <% } else {%>
-    <form action="/auth/logout" method="POST">
-      <button class="log-out-btn">Log out</button>
-    </form>
-  <% } %>
+
+  <nav class"main-nav">
+    <a href="/">Home</a>
+
+    <% if (currentUser && !currentUser.membership_status ) { %>
+      <button type="button" id="join-club-btn">Join the club</button>
+     <% } %>
+  </nav>
+
+  <div class="auth">
+    <% if(!currentUser){%>
+      <a class="log-in-link" href="/auth/login">Log in</a>
+    <% } else {%>
+      <form action="/auth/logout" method="POST">
+        <button class="log-out-btn">Log out</button>
+      </form>
+    <% } %>
+  </div>
 </header>
+
+<div id="join-club-modal" class="modal" hidden>
+  <div class="modal-content">
+    <button type="button" id="close-modal-btn">X</button>
+
+    <h2>Join the club</h2>
+
+    <form action="/auth/join" method="POST">
+      <label for="passcode">Secret passcode:</label>
+      <input type="password" id="passcode" name="passcode" required>
+
+      <button type="submit">Join</button>
+    </form>
+  </div>
+</div>
