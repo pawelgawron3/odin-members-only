@@ -1,10 +1,12 @@
 import "dotenv/config";
+import "./config/passport.js";
 import express from "express";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import passport from "passport";
 import pool from "./db/pool.js";
 import homeRouter from "./routes/homeRouter.js";
+import authRouter from "./routes/authRouter.js";
 
 const pgSession = connectPgSimple(session);
 
@@ -33,7 +35,8 @@ app.use(
 );
 app.use(passport.session());
 
-app.get("/", homeRouter);
+app.use("/", homeRouter);
+app.use("/auth", authRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
