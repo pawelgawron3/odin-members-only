@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <h1 class="title">Hello!</h1>
+
+    <% if(currentUser){ %>
+        <p>Currently logged user is: <%= currentUser.username %></p>
+    <% } %>
+
+    <% if(!currentUser){ %>
+        <p>Not logged in!</p>
+    <% } %>
+
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
