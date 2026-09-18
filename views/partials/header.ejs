@@ -9,8 +9,11 @@
   <nav class="main-nav">
     <a href="/">Home</a>
 
-    <% if (currentUser && !currentUser.membership_status ) { %>
-      <button type="button" id="join-club-btn">Join the club</button>
+    <% if (currentUser ) { %>
+      <a href="/messages/new">Create a new message</a>
+      <% if(!currentUser.membership_status) { %>
+        <button type="button" id="join-club-btn">Join the club</button>
+      <% } %>
      <% } %>
   </nav>
 
