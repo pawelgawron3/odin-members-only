@@ -7,6 +7,7 @@ import passport from "passport";
 import pool from "./db/pool.js";
 import homeRouter from "./routes/homeRouter.js";
 import authRouter from "./routes/authRouter.js";
+import messagesRouter from "./routes/messagesRouter.js";
 
 const pgSession = connectPgSimple(session);
 
@@ -42,6 +43,7 @@ app.use((req, res, next) => {
 
 app.use("/", homeRouter);
 app.use("/auth", authRouter);
+app.use("/messages", messagesRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
