@@ -20,7 +20,7 @@ authRouter.get("/login", authController.getLoginForm);
 authRouter.post(
   "/login",
   passport.authenticate("local", {
-    failureRedirect: "auth/login",
+    failureRedirect: "login",
     successRedirect: "/",
   }),
 );
