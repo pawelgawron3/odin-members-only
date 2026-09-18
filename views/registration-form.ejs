@@ -11,38 +11,41 @@
 <body>
     <%- include("partials/header.ejs") %>
 
-    <div class="hero-div">
-        <h1 class="title">Register a new account</h1>
-        <h2 class="info">Register a new account if you haven't already created one!</h2>
-    </div>
-    <div class="form-wrapper">
-        <% if (errors.length > 0) { %>
-            <ul>
-                <% errors.forEach(error => { %>
-                    <li><%= error.msg %></li>
-                <% }) %>
-            </ul>
-        <% } %>
+    <main>
+        <div class="hero-div">
+            <h1 class="title">Register a new account</h1>
+            <h2 class="info">Register a new account if you haven't already created one!</h2>
+        </div>
+        
+        <div class="form-wrapper">
+            <% if (errors.length > 0) { %>
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
 
-        <form action="/auth/register" method="POST">
-            <label for="firstname">Firstname:</label>
-            <input type="text" id="firstname" name="firstname" required placeholder="Mark">
+            <form action="/auth/register" method="POST">
+                <label for="firstname">Firstname:</label>
+                <input type="text" id="firstname" name="firstname" required placeholder="Mark">
 
-            <label for="lastname">Lastname:</label>
-            <input type="text" id="lastname" name="lastname" required placeholder="Zimmerman">
+                <label for="lastname">Lastname:</label>
+                <input type="text" id="lastname" name="lastname" required placeholder="Zimmerman">
 
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required placeholder="rooster99">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="rooster99">
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
 
-            <label for="confirmPassword">Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <label for="confirmPassword">Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-            <button type="submit">Register an account</button>
-        </form>
-    </div>
+                <button type="submit">Register an account</button>
+            </form>
+        </div>
+    </main>
     
     <%- include("partials/footer.ejs") %>
 </body>
