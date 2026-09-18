@@ -29,12 +29,23 @@ main {
   margin: 0 auto;
 }
 
-.title {
+.hero-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 56px 0 32px;
+}
+
+.hero-div .info {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.title {
   font-size: clamp(30px, 5vw, 44px);
   font-weight: 700;
   letter-spacing: -0.04em;
-  text-align: center;
 }
 
 /* HEADER */
