@@ -1,17 +1,10 @@
 import { Router } from "express";
 import passport from "passport";
 import registerValidator from "../validators/authValidator.js";
+import requireAuth from "../utils/requireAuth.js";
 import authController from "../controllers/authController.js";
 
 const authRouter = Router();
-
-function requireAuth(req, res, next) {
-  if (!req.isAuthenticated()) {
-    return res.redirect("/auth/login");
-  }
-
-  next();
-}
 
 authRouter.get("/register", authController.getRegistrationForm);
 authRouter.post("/register", registerValidator, authController.register);
