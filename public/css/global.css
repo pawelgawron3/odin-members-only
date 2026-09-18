@@ -267,6 +267,12 @@ footer {
   font-size: 12px;
 }
 
+footer p:not(:last-child)::after {
+  content: "•";
+  margin-left: 0.5rem;
+  color: #ffc038;
+}
+
 @media (max-width: 500px) {
   footer {
     flex-direction: column;
