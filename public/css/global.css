@@ -27,6 +27,9 @@ body {
 main {
   width: min(100% - 32px, var(--content-width));
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-div {
@@ -37,15 +40,15 @@ main {
   margin: 56px 0 32px;
 }
 
-.hero-div .info {
-  color: var(--color-text-muted);
-  font-size: 1rem;
-}
-
 .title {
   font-size: clamp(30px, 5vw, 44px);
   font-weight: 700;
   letter-spacing: -0.04em;
+}
+
+.hero-div .info {
+  color: var(--color-text-muted);
+  font-size: 1rem;
 }
 
 /* HEADER */
