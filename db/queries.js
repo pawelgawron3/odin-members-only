@@ -55,6 +55,16 @@ async function updateMembershipStatus(userId) {
   await pool.query(SQL, [userId]);
 }
 
+async function makeUserAdmin(userId) {
+  const SQL = `
+    UPDATE users
+    SET is_admin = true
+    WHERE id = $1
+  `;
+
+  await pool.query(SQL, [userId]);
+}
+
 export const db = {
   getUserById,
   getUserByUsername,
@@ -62,4 +72,5 @@ export const db = {
   getMessages,
   addMessage,
   updateMembershipStatus,
+  makeUserAdmin,
 };
