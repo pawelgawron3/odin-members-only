@@ -11,8 +11,13 @@
 
     <% if (currentUser ) { %>
       <a href="/messages/new">Create a new message</a>
+
       <% if(!currentUser.membership_status) { %>
         <button type="button" id="join-club-btn">Join the club</button>
+      <% } %>
+
+      <% if (currentUser.membership_status && !currentUser.is_admin) { %>
+        <button type="button" id="become-admin-btn">Become an admin</button>
       <% } %>
      <% } %>
   </nav>
@@ -28,6 +33,8 @@
   </div>
 </header>
 
+<!-- Join club modal -->
+
 <div id="join-club-modal" class="modal" hidden>
   <div class="modal-content">
     <button type="button" id="close-modal-btn">X</button>
@@ -39,6 +46,28 @@
       <input type="password" id="passcode" name="passcode" required>
 
       <button type="submit" id="join">Join</button>
+    </form>
+  </div>
+</div>
+
+<!-- Become admin modal -->
+
+<div id="admin-modal" class="modal" hidden>
+  <div class="modal-content">
+    <button type="button" id="close-admin-modal-btn">X</button>
+
+    <h2>Become an admin</h2>
+
+    <form action="/auth/become-admin" method="POST">
+      <label for="admin-passcode">Admin passcode:</label>
+      <input
+        type="password"
+        id="admin-passcode"
+        name="adminPasscode"
+        required
+      >
+
+      <button type="submit" id="become-admin">Become an admin</button>
     </form>
   </div>
 </div>
