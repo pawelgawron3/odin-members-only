@@ -22,4 +22,6 @@ authRouter.post("/logout", authController.logout);
 
 authRouter.post("/join", requireAuth, authController.joinClub);
 
+authRouter.post("/become-admin", requireAuth, authController.becomeAdmin);
+
 export default authRouter;
