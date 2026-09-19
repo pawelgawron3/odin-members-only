@@ -7,7 +7,7 @@
 }
 
 .home-messages li {
-  width: min(100%, 320px);
+  min-width: 300px;
   padding: 24px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -19,6 +19,10 @@
 .home-messages li:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+
+.home-messages li:last-child {
+  margin-bottom: 32px;
 }
 
 .message-meta {
