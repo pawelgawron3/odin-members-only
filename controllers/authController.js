@@ -57,6 +57,23 @@ const authController = {
 
     res.redirect("/");
   },
+
+  async becomeAdmin(req, res) {
+    if (!req.user.membership_status) {
+      return res.status(403).send("Membership required!");
+    }
+
+    const adminPasscode = req.body.adminPasscode;
+
+    if (adminPasscode !== process.env.ADMIN_PASSCODE) {
+      return res.status(403).send("Invalid admin passcode");
+    }
+    const userId = req.user.id;
+
+    await db.makeUserAdmin(userId);
+
+    res.redirect("/");
+  },
 };
 
 export default authController;
