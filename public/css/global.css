@@ -210,7 +210,7 @@ main {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
 }
 
-#join {
+.modal-content button[type="submit"] {
   margin-top: 16px;
   padding: 12px;
   border-radius: var(--radius-sm);
@@ -219,11 +219,12 @@ main {
   font-weight: 600;
 }
 
-#join:hover {
+.modal-content button[type="submit"]:hover {
   background: var(--color-primary-hover);
 }
 
-#close-modal-btn {
+#close-modal-btn,
+#close-admin-modal-btn {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -236,7 +237,8 @@ main {
   font-size: 18px;
 }
 
-#close-modal-btn:hover {
+#close-modal-btn:hover,
+#close-admin-modal-btn:hover {
   background: #f2f4f7;
   color: var(--color-text);
 }
