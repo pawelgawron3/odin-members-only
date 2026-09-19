@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropmsg | New Message</title>
+    <link rel="shortcut icon" href="/top_favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/new-message.css">
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <main>
+        <div class="hero-div">
+            <h1 class="title">New message</h1>
+            <h2 class="info">Create a new message!</h2>
+        </div>
+
+        <div class="form-wrapper">
+            <form action="/messages/new" method="POST">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+    
+                <label for="text">Text:</label>
+                <textarea id="text" name="text" rows="6" required></textarea>
+    
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
