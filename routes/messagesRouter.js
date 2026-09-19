@@ -5,8 +5,6 @@ import messagesController from "../controllers/messagesController.js";
 const messagesRouter = Router();
 
 messagesRouter.get("/new", requireAuth, messagesController.getNewMessageForm);
-messagesRouter.post("/new", (req, res) => {
-  res.send("Good");
-});
+messagesRouter.post("/new", requireAuth, messagesController.createNewMessage);
 
 export default messagesRouter;
