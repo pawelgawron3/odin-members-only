@@ -36,6 +36,15 @@ async function getMessages() {
   return rows;
 }
 
+async function addMessage(userId, message) {
+  const SQL = `
+    INSERT INTO messages (title, text, user_id)
+    VALUES ($1, $2, $3)
+  `;
+
+  await pool.query(SQL, [message.title, message.text, userId]);
+}
+
 async function updateMembershipStatus(userId) {
   const SQL = `
     UPDATE users
@@ -51,5 +60,6 @@ export const db = {
   getUserByUsername,
   registerNewAccount,
   getMessages,
+  addMessage,
   updateMembershipStatus,
 };
