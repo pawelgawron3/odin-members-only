@@ -92,4 +92,6 @@ Messages are connected to their authors through a relationship between the `mess
 
 ## 🎮 Live Demo
 
-- _See the "About" section for the live demo link._
+Due to Render's Free Tier limitation of having only one active PostgreSQL database, I decided not to deploy this project at the moment.
+
+To see the project in action, please clone the repository to your local machine, install the required dependencies, configure the necessary environment variables, and run the application locally.
