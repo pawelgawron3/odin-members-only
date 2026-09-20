@@ -28,7 +28,7 @@ async function registerNewAccount(user) {
 
 async function getMessages() {
   const SQL = `
-    SELECT u.username, m.title, m.text, m.created_at 
+    SELECT u.username, m.id, m.title, m.text, m.created_at 
     FROM messages AS m JOIN users AS u ON m.user_id = u.id
   `;
 
@@ -43,6 +43,15 @@ async function addMessage(userId, message) {
   `;
 
   await pool.query(SQL, [message.title, message.text, userId]);
+}
+
+async function deleteMessage(messageId) {
+  const SQL = `
+    DELETE FROM messages
+    WHERE id = $1
+  `;
+
+  await pool.query(SQL, [messageId]);
 }
 
 async function updateMembershipStatus(userId) {
@@ -71,6 +80,7 @@ export const db = {
   registerNewAccount,
   getMessages,
   addMessage,
+  deleteMessage,
   updateMembershipStatus,
   makeUserAdmin,
 };

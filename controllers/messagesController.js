@@ -17,6 +17,14 @@ const messagesController = {
       console.log(err);
     }
   },
+
+  async deleteMessage(req, res) {
+    const messageId = req.params.id;
+
+    await db.deleteMessage(messageId);
+
+    res.redirect("/");
+  },
 };
 
 export default messagesController;
