@@ -7,7 +7,7 @@
 }
 
 .home-messages li {
-  min-width: 300px;
+  width: 450px;
   padding: 24px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
