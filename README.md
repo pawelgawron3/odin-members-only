@@ -8,6 +8,9 @@ Dropmsg is a members-only messaging application built with Node.js, Express, EJS
 
 This project was built as part of The Odin Project curriculum to practice building a web app with authentication, authorization, database integration, and server-side rendering.
 
+Dropmsg is an expanded version of an earlier Message Board project I built as part of the TOP.
+[Mini Message Board](https://github.com/pawelgawron3/odin-mini-message-board)
+
 ---
 
 ## 🚀 Features
