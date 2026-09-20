@@ -28,8 +28,9 @@ async function registerNewAccount(user) {
 
 async function getMessages() {
   const SQL = `
-    SELECT u.username, m.id, m.title, m.text, m.created_at 
+    SELECT m.id, u.username, m.title, m.text, m.created_at 
     FROM messages AS m JOIN users AS u ON m.user_id = u.id
+    ORDER BY m.created_at DESC
   `;
 
   const { rows } = await pool.query(SQL);

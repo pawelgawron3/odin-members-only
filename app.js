@@ -1,13 +1,18 @@
 import "dotenv/config";
 import "./config/passport.js";
+
 import express from "express";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import passport from "passport";
+
 import pool from "./db/pool.js";
+
 import homeRouter from "./routes/homeRouter.js";
 import authRouter from "./routes/authRouter.js";
 import messagesRouter from "./routes/messagesRouter.js";
+
+import { notFound, errorHandler } from "./utils/errorHandler.js";
 
 const pgSession = connectPgSimple(session);
 
@@ -19,7 +24,6 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static("public"));
 
 app.use(
@@ -37,13 +41,16 @@ app.use(
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  res.locals.currentUser = req?.user;
+  res.locals.currentUser = req.user;
   next();
 });
 
 app.use("/", homeRouter);
 app.use("/auth", authRouter);
 app.use("/messages", messagesRouter);
+
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, (err) => {
   if (err) throw err;

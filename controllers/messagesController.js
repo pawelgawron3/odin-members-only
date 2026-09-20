@@ -5,7 +5,7 @@ const messagesController = {
     res.render("new-message");
   },
 
-  async createNewMessage(req, res) {
+  async createNewMessage(req, res, next) {
     try {
       const userId = req.user.id;
       const message = req.body;
@@ -14,16 +14,20 @@ const messagesController = {
 
       res.redirect("/");
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   },
 
-  async deleteMessage(req, res) {
-    const messageId = req.params.id;
+  async deleteMessage(req, res, next) {
+    try {
+      const messageId = req.params.id;
 
-    await db.deleteMessage(messageId);
+      await db.deleteMessage(messageId);
 
-    res.redirect("/");
+      res.redirect("/");
+    } catch (err) {
+      next(err);
+    }
   },
 };
 
