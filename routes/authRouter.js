@@ -1,7 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
 import registerValidator from "../validators/authValidator.js";
-import requireAuth from "../utils/requireAuth.js";
+import { requireAuth } from "../utils/requireAuth.js";
 import authController from "../controllers/authController.js";
 
 const authRouter = Router();
